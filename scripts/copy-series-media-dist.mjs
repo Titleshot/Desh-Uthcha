@@ -17,13 +17,17 @@ function resolveBhimsenMediaDir() {
   } catch {
     /* ignore */
   }
-  return preferred
+  return null
 }
 
 const srcDir = resolveBhimsenMediaDir()
 const destDir = path.join(root, 'dist', 'series-media')
 
 fs.mkdirSync(destDir, { recursive: true })
+if (!srcDir) {
+  console.log('copy-series-media-dist: skipped (no Compressed Video folder on this machine)')
+  process.exit(0)
+}
 let n = 0
 for (const name of fs.readdirSync(srcDir)) {
   if (!/\.(mp4|webp)$/i.test(name)) continue
