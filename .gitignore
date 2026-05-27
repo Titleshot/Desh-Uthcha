@@ -19,7 +19,7 @@ dist-ssr
 **/Keys.txt
 **/supabase/Keys.txt
 
-# Large local media (not required for main app build; add locally or via scripts)
+# Local working copies (production uses public/series-media/ in Git)
 Compressed Video/
 Compressed Videos/
 
@@ -40,3 +40,5 @@ Final Desh Uthcha Website/Desh Uthcha/
 *.njsproj
 *.sln
 *.sw?
+
+.vercel

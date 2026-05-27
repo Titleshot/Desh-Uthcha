@@ -25,14 +25,16 @@ Production hosting is configured for **[Vercel](https://vercel.com)** (best fit 
 
 ## Bhimsen series media
 
-`Compressed Video(s)/` is not in Git (large files). After clone/deploy, run locally:
+Episode videos live in **`public/series-media/`** (committed, deployed with the site).
+
+After replacing files in `Compressed Videos/` locally:
 
 ```powershell
-npm run optimize:series-media   # optional
-npm run build                   # copies mp4/webp into dist/series-media
+npm run sync:series-media
+git add public/series-media
+git commit -m "Update Bhimsen series media"
+git push
 ```
-
-Then redeploy, or host `series-media` on a CDN and link from the app later.
 
 ## Local production preview
 
