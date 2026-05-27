@@ -26,6 +26,10 @@ Compressed Videos/
 # Nested duplicate project copy (keep `Final Desh Uthcha Website/` source only)
 Final Desh Uthcha Website/Desh Uthcha/
 
+# Office temp / lock files
+~$*
+*.tmp
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
