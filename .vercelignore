@@ -1,0 +1,6 @@
+# Exclude only local-only folders (not in Git). Do NOT exclude Final website .mp4 — build needs them.
+node_modules
+Compressed Video
+Compressed Videos
+Final Desh Uthcha Website/Desh Uthcha
+test
