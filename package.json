@@ -6,8 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build && node ./scripts/copy-series-media-dist.mjs",
+    "install:deps": "npm install && npm install --prefix \"Public Commitments Tracker\" && npm install --prefix \"Final Desh Uthcha Website\"",
+    "build:tracker": "npm run build --prefix \"Public Commitments Tracker\"",
     "build:final-website": "npm run build --prefix \"Final Desh Uthcha Website\"",
-    "build:all": "npm run build:final-website && npm run build",
+    "build:production": "npm run build:tracker && npm run build:final-website && npm run build",
+    "build:all": "npm run build:production",
     "preview": "vite preview",
     "optimize:series-media": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/optimize-bhimsen-media.ps1"
   },
