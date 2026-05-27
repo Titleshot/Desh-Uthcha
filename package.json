@@ -1,0 +1,31 @@
+{
+  "name": "desh-uthcha",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build && node ./scripts/copy-series-media-dist.mjs",
+    "build:final-website": "npm run build --prefix \"Final Desh Uthcha Website\"",
+    "build:all": "npm run build:final-website && npm run build",
+    "preview": "vite preview",
+    "optimize:series-media": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/optimize-bhimsen-media.ps1"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "typescript": "~6.0.2",
+    "vite": "^8.0.4",
+    "vite-plugin-static-copy": "^4.0.1"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.2.2",
+    "framer-motion": "^12.38.0",
+    "lucide-react": "^1.8.0",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "react-router-dom": "^7.14.0",
+    "tailwindcss": "^4.2.2"
+  }
+}

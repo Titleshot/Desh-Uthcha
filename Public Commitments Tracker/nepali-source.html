@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ne" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Original Document (Nepali) — 100-Point Reform Source</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: Inter, system-ui, sans-serif;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-[#070b14] text-slate-200 antialiased">
+    <header class="sticky top-0 z-10 border-b border-slate-800 bg-[#050811]/95 backdrop-blur">
+      <div class="mx-auto flex max-w-3xl flex-col gap-2 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wider text-blue-400/90">Official source (Nepali)</p>
+          <h1 class="text-lg font-semibold text-white">Cabinet-approved 100-point reform</h1>
+          <p class="mt-1 text-sm text-slate-500">Facsimile · 19 pages · same order as the published document</p>
+        </div>
+        <a
+          href="index.html"
+          class="rounded-lg border border-slate-600 px-3 py-2 text-center text-sm font-medium text-slate-300 hover:border-blue-500/50 hover:text-white"
+          >Back to platform</a
+        >
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-3xl px-4 py-10">
+      <p class="mb-8 text-sm leading-relaxed text-slate-400">
+        Below is a page-by-page facsimile for verification against the platform’s English interpretation. For one file,
+        use <strong class="text-slate-300">Download official source (Nepali PDF)</strong> on the main site.
+      </p>
+
+      <div class="flex flex-col gap-10" id="page-list"></div>
+    </main>
+
+    <script>
+      (function () {
+        var root = "documents/nepali-source/";
+        var exts = ["png", "jpg", "jpeg", "webp"];
+        var list = document.getElementById("page-list");
+
+        for (var p = 1; p <= 19; p++) {
+          (function (pageNum) {
+            var fig = document.createElement("figure");
+            fig.className = "overflow-hidden rounded-xl border border-slate-800 bg-slate-900/40 shadow-lg";
+
+            var cap = document.createElement("figcaption");
+            cap.className = "border-b border-slate-800 bg-slate-950/50 px-4 py-2 text-sm font-medium text-slate-400";
+            cap.textContent = "Page " + pageNum + " of 19";
+
+            var img = document.createElement("img");
+            img.alt = "Cabinet-approved governance reform document, page " + pageNum;
+            img.className = "w-full bg-black object-contain";
+            img.loading = "lazy";
+
+            var missing = document.createElement("div");
+            missing.className = "hidden px-4 py-12 text-center text-sm text-slate-500";
+            missing.textContent =
+              "Image missing for this page. Expected file: " +
+              root +
+              String(pageNum).padStart(2, "0") +
+              ".png (or .jpg).";
+
+            var idx = 0;
+            function tryLoad() {
+              if (idx >= exts.length) {
+                img.classList.add("hidden");
+                missing.classList.remove("hidden");
+                return;
+              }
+              var path = root + String(pageNum).padStart(2, "0") + "." + exts[idx];
+              img.onload = function () {
+                img.onerror = null;
+              };
+              img.onerror = function () {
+                idx++;
+                tryLoad();
+              };
+              img.src = path;
+            }
+            tryLoad();
+
+            fig.appendChild(cap);
+            fig.appendChild(img);
+            fig.appendChild(missing);
+            list.appendChild(fig);
+          })(p);
+        }
+      })();
+    </script>
+  </body>
+</html>
